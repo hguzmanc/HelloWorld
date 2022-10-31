@@ -1,0 +1,18 @@
+Para ejecutar las pruebas dle presente proyecto primero se debe instalar las dependencias del archivo requirements
+en su entorno virtual
+
+=============================================
+= Comandos para la ejecución de las pruebas =
+=============================================
+Ejecutar prueba
+    py.test -v -s
+
+Generar reporte
+    pytest --html=report.html
+
+===============================================
+= Escenario básico de la demo  acceso a Login =
+===============================================
+Dado que el usuario ingresa a la url del sistema
+Cuando el sistema carga
+Entonces el sistema debe mostrar la pantalla de login
