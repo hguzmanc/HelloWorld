@@ -1,12 +1,16 @@
-import time
 import unittest
 from selenium import webdriver
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
 from pyunitreport import HTMLTestRunner
+import time
 
 
 class HelloWorld(unittest.TestCase):
-    driver = webdriver.Chrome(executable_path="chromedriver.exe")
+    driver = None
+    #driver = webdriver.Firefox(service=Service(executable_path=GeckoDriverManager().install()))
+    #driver = webdriver.Chrome(executable_path="chromedriver.exe")
     __image_login = '//*[@id="root"]/div/div[1]'
     __user_name = '//*[@id="user-name"]'
     __user_password = '//*[@id="password"]'
@@ -16,10 +20,10 @@ class HelloWorld(unittest.TestCase):
     __text_error = "Epic sadface: Username and password do not match any user in this service"
 
     @classmethod
-    def SetUp(cls):
-        driver = cls.driver
-        driver.maximize_window()
-        driver.implicitly_wait(3)
+    def setUp(cls):
+        cls.driver = webdriver.Firefox(service=Service(executable_path=GeckoDriverManager().install()))
+        cls.driver.maximize_window()
+        cls.driver.implicitly_wait(3)
 
     def test1_hello_world(self):
         driver = self.driver
@@ -48,8 +52,7 @@ class HelloWorld(unittest.TestCase):
 
     @classmethod
     def tearDown(cls):
-        pass
-       # cls.driver.quit()
+        cls.driver.quit()
 
 
 if __name__ == '__main__':
