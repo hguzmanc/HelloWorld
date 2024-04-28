@@ -109,7 +109,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+ssh
+ssh.pub
+pcssh
+pcssh.pub
 # Spyder project settings
 .spyderproject
 .spyproject
